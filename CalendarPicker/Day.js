@@ -39,6 +39,7 @@ export default function Day(props) {
   } = props;
 
   const thisDay = moment({year, month, day, hour: 12 });
+  const isSunday = thisDay.day() === 0 ? true : false;
   const today = moment();
 
   let dateOutOfRange;
@@ -202,7 +203,7 @@ export default function Day(props) {
             disabled={!enableDateChange}
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle ]}
             onPress={() => onPressDay({year, month, day}) }>
-            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
+            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle,{color: isSunday ? "#F16354" : "rgb(0,0,0,0.9)"}]}>
               { day }
             </Text>
           </TouchableOpacity>
@@ -221,7 +222,7 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
         <View style={[styles.dayButton, custom.style]}>
-          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
+          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle,{color: isSunday ? "#F16354" : "rgb(0,0,0,0.9)"}]}>
             { day }
           </Text>
         </View>

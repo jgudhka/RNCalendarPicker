@@ -36,7 +36,7 @@ export default function Weekdays(props) {
           dayOfWeekTextStyle.push(customDayOfWeekStyles.textStyle);
         }
         return (
-          <View style={customDayOfWeekStyles.style} key={key}>
+          <View style={[customDayOfWeekStyles.style,{marginBottom: 10}]} key={key}>
             <Text style={dayOfWeekTextStyle}>
               {day}
             </Text>

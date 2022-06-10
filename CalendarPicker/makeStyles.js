@@ -4,15 +4,43 @@
  * Copyright 2016 Yahoo Inc.
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
+import { Dimensions, PixelRatio } from 'react-native';
+
 const DEFAULT_SELECTED_BACKGROUND_COLOR = '#5ce600';
 const DEFAULT_SELECTED_TEXT_COLOR = '#000000';
 const DEFAULT_TODAY_BACKGROUND_COLOR = '#CCCCCC';
+
+
+export const DesignWidth = 375;
+export const DesignHeight = 812;
+export const screenWidth = Dimensions.get('window').width;
+export const screenHeight = Dimensions.get('window').height;
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const scale = SCREEN_WIDTH / 375;
+
+export function normalize(size) {
+  return PixelRatio.roundToNearestPixel(size * scale);
+}
+
+export const vw = (width) => {
+  let percent = (width / DesignWidth) * 100;
+  const elemWidth = parseFloat(percent + "%");
+  return PixelRatio.roundToNearestPixel(screenWidth * elemWidth / 100);
+};
+
+export const vh = (height) => {
+  let percent = (height / DesignHeight) * 100;
+  const elemHeight = parseFloat(percent + "%");
+  return PixelRatio.roundToNearestPixel(screenHeight * elemHeight / 100);
+};
+
 
 function getBorderRadiusByShape(scaler, dayShape) {
   if (dayShape === 'square') {
     return 0;
   } else {
-    return 30*scaler;
+    return 50;
   }
 }
 
@@ -41,8 +69,8 @@ export function makeStyles(params) {
     },
 
     dayButton: {
-      width: 30*scaler,
-      height: 30*scaler,
+      width: 50,
+      height: 50,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
       justifyContent: 'center'
@@ -62,7 +90,7 @@ export function makeStyles(params) {
       flexDirection: 'row',
       borderBottomWidth: 1,
       borderTopWidth: 1,
-      paddingTop: 10*scaler,
+      paddingTop: 24,
       paddingBottom: 10*scaler,
       alignSelf: 'center',
       justifyContent: 'center',
@@ -76,28 +104,28 @@ export function makeStyles(params) {
     },
 
     dayLabels: {
-      width: 50*scaler,
+      width: 50,
       fontSize: 12*scaler,
       color: '#000',
       textAlign: 'center'
     },
 
     selectedDay: {
-      width: 30*scaler,
-      height:30*scaler,
+      width: 50,
+      height: 50,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     selectedDayBackground: {
-      backgroundColor: SELECTED_BG_COLOR,
+      // backgroundColor: SELECTED_BG_COLOR,
     },
 
     selectedToday: {
-      width: 30*scaler,
-      height:30*scaler,
-      backgroundColor: TODAY_BG_COLOR,
+      width: 50,
+      height: 50,
+      // backgroundColor: TODAY_BG_COLOR,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
       justifyContent: 'center'
@@ -106,14 +134,14 @@ export function makeStyles(params) {
     dayWrapper: {
       alignItems: 'center',
       justifyContent: 'center',
-      width: 50*scaler,
-      height: 40*scaler,
+      width: 50,
+      height: 50,
       backgroundColor: 'rgba(0,0,0,0.0)'
     },
 
     startDayWrapper: {
-      width: 50*scaler,
-      height: 30*scaler,
+      width: 50,
+      height: 50,
       borderTopLeftRadius: 20*scaler,
       borderBottomLeftRadius: 20*scaler,
       backgroundColor: SELECTED_BG_COLOR,
@@ -122,8 +150,8 @@ export function makeStyles(params) {
     },
 
     endDayWrapper: {
-      width: 50*scaler,
-      height: 30*scaler,
+      width: 50,
+      height: 50,
       borderTopRightRadius: 20*scaler,
       borderBottomRightRadius: 20*scaler,
       backgroundColor: SELECTED_BG_COLOR,
@@ -132,8 +160,8 @@ export function makeStyles(params) {
     },
 
     inRangeDay: {
-      width: 50*scaler,
-      height: 30*scaler,
+      width: 50,
+      height: 50,
       backgroundColor: SELECTED_BG_COLOR,
       alignSelf: 'center',
       justifyContent: 'center'
@@ -201,9 +229,9 @@ export function makeStyles(params) {
     },
 
     monthButton: {
-      width: 30*scaler,
-      height: 30*scaler,
-      borderRadius: 30*scaler,
+      width: 50,
+      height: 50,
+      borderRadius: 50,
       alignSelf: 'center',
       justifyContent: 'center'
     },

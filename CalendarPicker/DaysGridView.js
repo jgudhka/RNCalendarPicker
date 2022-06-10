@@ -45,7 +45,6 @@ export default class DaysGridView extends Component {
 
       // Determine starting index based on first day of week prop.
       const startIndex = (firstDay > 0) ? (firstWeekDay + Utils.FIRST_DAY_OFFSETS[firstDay]) % 7 : firstWeekDay;
-
       return {
         maxWeekRows: 6,
         numDaysInWeek: 7,
@@ -171,8 +170,10 @@ export default class DaysGridView extends Component {
       maxWeekRows,
       startIndex,
       numDaysInMonth,
-      numDaysInPrevMonth
+      numDaysInPrevMonth,
+      firstDayOfMonth
     } = params;
+    const isSunday = firstDayOfMonth.day() === 0
     let daysGrid = [[]];
     let dayOfMonth = 1;
     let dayNextMonth = 1;
@@ -219,7 +220,7 @@ export default class DaysGridView extends Component {
         }
       }
     }
-    return daysGrid;
+    return isSunday ? daysGrid.splice(1,daysGrid.length) : daysGrid;
   }
 
   render() {
