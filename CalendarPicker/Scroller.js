@@ -91,8 +91,7 @@ export default class CalendarScroller extends Component {
       newState = {...newState, ...this.updateMonthsData(this.props.data)};
     }
 
-    if (Platform.OS === 'android' &&
-        this.props.renderMonthParams.selectedStartDate !== prevProps.renderMonthParams.selectedStartDate)
+    if (this.props.renderMonthParams.selectedStartDate !== prevProps.renderMonthParams.selectedStartDate)
     {
       // Android unexpectedly jumps to previous month on first selected date.
       // Scroll RLV to selected date's month.
