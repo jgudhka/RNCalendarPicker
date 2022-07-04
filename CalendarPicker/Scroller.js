@@ -74,7 +74,7 @@ export default class CalendarScroller extends Component {
     return this.state.data !== prevState.data ||
       this.state.itemHeight !== prevState.itemHeight ||
       this.state.itemWidth !== prevState.itemWidth ||
-      this.props.renderMonthParams !== prevProps.renderMonthParams;
+      this.props.renderMonthParams?.selectedStartDate !== prevProps.renderMonthParams?.selectedStartDate;
   }
 
   componentDidUpdate(prevProps) {
