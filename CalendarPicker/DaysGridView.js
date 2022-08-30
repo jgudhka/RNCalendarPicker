@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { stylePropType } from './localPropTypes';
 import Day from './Day';
@@ -226,6 +226,8 @@ export default class DaysGridView extends Component {
   render() {
     const { styles } = this.props;
     const { daysGrid } = this.state;
+    const MONTHS =  Utils.MONTHS; // English Month Array
+    const monthName = MONTHS[this.props.month];
     const renderedDaysGrid = daysGrid.map((weekRow, i) => (
       <View key={i} style={styles.weekRow}>
         { weekRow.map(day => day.component ) }
@@ -234,6 +236,7 @@ export default class DaysGridView extends Component {
 
     return (
       <View style={styles.daysWrapper}>
+      <Text style={this.props.monthYearStyles}>{monthName} {" "}{this.props.year}</Text>
         { renderedDaysGrid }
       </View>
     );
@@ -269,4 +272,5 @@ DaysGridView.propTypes = {
   disabledDatesTextStyle: stylePropType,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
+  monthYearStyles: stylePropType
 };

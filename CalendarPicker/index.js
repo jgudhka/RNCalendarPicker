@@ -52,6 +52,8 @@ export default class CalendarPicker extends Component {
     selectedRangeStartStyle: null,
     selectedRangeEndStyle: null,
     selectedRangeStyle: null,
+    monthYearStyles: null,
+    calendarHeight: 300
   };
 
   componentDidUpdate(prevProps) {
@@ -393,6 +395,8 @@ export default class CalendarPicker extends Component {
       selectedRangeStyle: this.props.selectedRangeStyle,
       selectedRangeEndStyle: this.props.selectedRangeEndStyle,
       customDatesStyles: this.props.customDatesStyles,
+      monthYearStyles: this.props.monthYearStyles,
+      calendarHeight: this.props.calendarHeight
     };
   }
 
@@ -484,6 +488,8 @@ export default class CalendarPicker extends Component {
       onMonthChange,
       scrollable,
       horizontal,
+      monthYearStyles,
+      calendarHeight
     } = this.props;
 
     let content;
@@ -529,7 +535,8 @@ export default class CalendarPicker extends Component {
     default:
       content = (
         <View styles={styles.calendar}>
-          <HeaderControls
+        
+          {/* <HeaderControls
             styles={styles}
             currentMonth={currentMonth}
             currentYear={currentYear}
@@ -554,7 +561,7 @@ export default class CalendarPicker extends Component {
             headingLevel={headingLevel}
             monthYearHeaderWrapperStyle={monthYearHeaderWrapperStyle}
             headerWrapperStyle={headerWrapperStyle}
-          />
+          /> */}
           <Weekdays
             styles={styles}
             firstDay={startFromMonday ? 1 : firstDay}
@@ -579,6 +586,8 @@ export default class CalendarPicker extends Component {
               updateMonthYear={this.updateMonthYear}
               onMonthChange={onMonthChange}
               horizontal={horizontal}
+              monthYearStyles={monthYearStyles}
+              calendarHeight={calendarHeight}
             />
             :
             this.renderMonth(renderMonthParams)

@@ -10,8 +10,8 @@ export const Utils = {
   END_DATE: 'END_DATE',
   WEEKDAYS: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   MONTHS: [
-    'January', 'February', 'March', 'April', 'May', 'June', 'July',
-    'August', 'September', 'October', 'November', 'December'
+    'Jan', 'Febr', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+    'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
   ],
   MAX_ROWS: 7,
   MAX_COLUMNS: 7,

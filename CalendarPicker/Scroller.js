@@ -23,6 +23,7 @@ export default class CalendarScroller extends Component {
     horizontal: PropTypes.bool,
     updateMonthYear: PropTypes.func,
     onMonthChange: PropTypes.func,
+    calendarHeight: PropTypes.number
   }
 
   static defaultProps = {
@@ -262,7 +263,7 @@ export default class CalendarScroller extends Component {
       return null;
     }
     return (
-      <View style={{ width, height }} onLayout={this.onLayout}>
+      <View style={{ width, minHeight: calendarHeight,height }} onLayout={this.onLayout}>
         <RecyclerListView
           ref={rlv => this.rlv = rlv}
           layoutProvider={layoutProvider}
